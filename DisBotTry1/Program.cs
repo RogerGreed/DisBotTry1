@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using Discord;
 using DSharpPlus;
 using System.Threading.Tasks;
@@ -17,9 +19,12 @@ namespace DisBotTry1
 
             static async Task MainAsync(string[] args)
             {
-                discord = new DiscordClient(new DiscordConfiguration
+            StreamReader fs = new StreamReader("Token.txt");
+            string s = "";
+            s = fs.ReadLine();
+            discord = new DiscordClient(new DiscordConfiguration
                 {
-                    Token =  "NzQ2MDI4NTU2MDE3OTkxNzUw.Xz6XPA.DRKCpUWy70FBD2VlwJH9BltK6 - 8" ,
+                    Token = s,
                     TokenType = TokenType.Bot
                 });
 
@@ -32,6 +37,10 @@ namespace DisBotTry1
                         await e.Message.RespondAsync("https://www.youtube.com/watch?v=Q5glfpSXUeE");
                     if (e.Message.Content.ToLower().StartsWith("!жрать"))
                         await e.Message.RespondAsync("https://www.youtube.com/watch?v=5wY6SyKBi5U");
+                    if (e.Message.Content.ToLower().StartsWith("!подскажи билд"))
+                        await e.Message.RespondAsync("@Дракон, тебя спрашивают!");
+                    if (e.Message.Content.StartsWith("ГГГ пидоры!"))
+                        await e.Message.RespondAsync("Пидоры ебаные!");
                 };
 
                 await discord.ConnectAsync();
