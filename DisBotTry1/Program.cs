@@ -20,11 +20,9 @@ namespace DisBotTry1
             static async Task MainAsync(string[] args)
             {
             StreamReader fs = new StreamReader("Token.txt");
-            string s = "";
-            s = fs.ReadLine();
             discord = new DiscordClient(new DiscordConfiguration
                 {
-                    Token = s,
+                    Token = fs.ReadLine(),
                     TokenType = TokenType.Bot
                 });
 
