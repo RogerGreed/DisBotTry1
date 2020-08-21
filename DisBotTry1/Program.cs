@@ -27,7 +27,11 @@ namespace DisBotTry1
                 {
                     string message = e.Message.Content;
                     if (e.Message.Content.ToLower().StartsWith("$"))
-                        await e.Message.RespondAsync("Привет" + e.Message.Author + "ты сказал" + e.Message.Content);
+                        await e.Message.RespondAsync("Привет, " + e.Author.Username + ", ты сказал: " + e.Message.Content);
+                    if (e.Message.Content.ToLower().StartsWith("?"))
+                        await e.Message.RespondAsync("https://www.youtube.com/watch?v=Q5glfpSXUeE");
+                    if (e.Message.Content.ToLower().StartsWith("!жрать"))
+                        await e.Message.RespondAsync("https://www.youtube.com/watch?v=5wY6SyKBi5U");
                 };
 
                 await discord.ConnectAsync();
